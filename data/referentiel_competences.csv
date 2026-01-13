@@ -1,0 +1,8 @@
+CompetencyID,Competency,BlockID,BlockName
+C01,data cleaning,1,Data Analysis
+C02,data visualization,1,Data Analysis
+C03,Python programming,1,Data Analysis
+C04,regression,2,Machine Learning
+C05,neural networks,2,Machine Learning
+C06,tokenization,3,NLP
+C07,transformers,3,NLP

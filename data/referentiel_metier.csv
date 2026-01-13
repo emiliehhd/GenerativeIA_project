@@ -1,0 +1,6 @@
+JobID,JobTitle,RequiredCompetencies
+J01,Data Analyst,C01;C02;C03
+J02,ML Engineer,C03;C04;C05
+J03,Data Scientist,C01;C02;C03;C04;C05;C06;C07
+J04,IA Specialist,
+J05,
