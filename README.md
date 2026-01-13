@@ -1,1 +1,5 @@
-# GenerativeIA_project
+# Generative IA Project
+
+```bash
+pip install -r requirements.txt
+```
