@@ -103,8 +103,8 @@ class SemanticEngine:
         # Associer les scores aux compétences
         self.competences_df['similarity_score'] = max_similarities
 
-        # Ajuster les scores basés sur l'échelle de Likert
-        self._adjust_scores_with_likert(user_responses) #ICI
+        # # Ajuster les scores basés sur l'échelle de Likert
+        # self._adjust_scores_with_likert(user_responses) #ICI
         
         # Calculer les scores par bloc
         bloc_scores = self._calculate_bloc_scores()
@@ -119,17 +119,17 @@ class SemanticEngine:
         # Score global
         overall_score = np.mean(list(bloc_scores.values()))
 
-        # Stocker les scores Likert dans les résultats #ICI
-        likert_scores = {}
-        if 'python_level' in user_responses:
-            likert_scores['python'] = user_responses['python_level']
-        if 'sql_level' in user_responses:
-            likert_scores['sql'] = user_responses['sql_level']
+        # # Stocker les scores Likert dans les résultats #ICI
+        # likert_scores = {}
+        # if 'python_level' in user_responses:
+        #     likert_scores['python'] = user_responses['python_level']
+        # if 'sql_level' in user_responses:
+        #     likert_scores['sql'] = user_responses['sql_level']
         
         return {
             'bloc_scores': bloc_scores,
             'overall_score': float(overall_score),
-            'likert_scores': likert_scores,
+            # 'likert_scores': likert_scores,
             'metier_recommendations': metier_recommendations,
             'strong_competences': strong_competences,
             'weak_competences': weak_competences,
@@ -137,53 +137,53 @@ class SemanticEngine:
         }
     
     
-def _adjust_scores_with_likert(self, user_responses: Dict[str, Any]):
-    """
-    Ajuste les scores sémantiques basés sur les réponses Likert
-    """
-    logger.info(f"Ajustement avec scores Likert: {user_responses.get('python_level')}, {user_responses.get('sql_level')}")
+# def _adjust_scores_with_likert(self, user_responses: Dict[str, Any]):
+#     """
+#     Ajuste les scores sémantiques basés sur les réponses Likert
+#     """
+#     logger.info(f"Ajustement avec scores Likert: {user_responses.get('python_level')}, {user_responses.get('sql_level')}")
     
-    # Vérifier si les scores Likert existent
-    has_python_likert = 'python_level' in user_responses
-    has_sql_likert = 'sql_level' in user_responses
+#     # Vérifier si les scores Likert existent
+#     has_python_likert = 'python_level' in user_responses
+#     has_sql_likert = 'sql_level' in user_responses
     
-    if not (has_python_likert or has_sql_likert):
-        logger.info("Aucun score Likert fourni, pas d'ajustement")
-        return
+#     if not (has_python_likert or has_sql_likert):
+#         logger.info("Aucun score Likert fourni, pas d'ajustement")
+#         return
     
-    # Ajuster chaque compétence
-    for competence_idx, row in self.competences_df.iterrows():
-        competence_name = row['competence'].lower()
-        current_score = row['similarity_score']
+#     # Ajuster chaque compétence
+#     for competence_idx, row in self.competences_df.iterrows():
+#         competence_name = row['competence'].lower()
+#         current_score = row['similarity_score']
         
-        # Vérifier Python
-        if has_python_likert and ('python' in competence_name):
-            python_score = user_responses['python_level']
-            # Convertir 1-5 → 0-1
-            likert_normalized = (python_score - 1) / 4.0
+#         # Vérifier Python
+#         if has_python_likert and ('python' in competence_name):
+#             python_score = user_responses['python_level']
+#             # Convertir 1-5 → 0-1
+#             likert_normalized = (python_score - 1) / 4.0
             
-            # Log pour debug
-            logger.debug(f"Python: {competence_name} - Score sémantique: {current_score:.3f}, Likert: {python_score}->{likert_normalized:.3f}")
+#             # Log pour debug
+#             logger.debug(f"Python: {competence_name} - Score sémantique: {current_score:.3f}, Likert: {python_score}->{likert_normalized:.3f}")
             
-            # Combinaison : 60% sémantique, 40% Likert
-            adjusted_score = (0.6 * current_score) + (0.4 * likert_normalized)
-            self.competences_df.at[competence_idx, 'similarity_score'] = adjusted_score
+#             # Combinaison : 60% sémantique, 40% Likert
+#             adjusted_score = (0.6 * current_score) + (0.4 * likert_normalized)
+#             self.competences_df.at[competence_idx, 'similarity_score'] = adjusted_score
             
-            logger.debug(f"  → Ajusté à: {adjusted_score:.3f}")
+#             logger.debug(f"  → Ajusté à: {adjusted_score:.3f}")
         
-        # Vérifier SQL
-        elif has_sql_likert and ('sql' in competence_name or 'query' in competence_name):
-            sql_score = user_responses['sql_level']
-            likert_normalized = (sql_score - 1) / 4.0
+#         # Vérifier SQL
+#         elif has_sql_likert and ('sql' in competence_name or 'query' in competence_name):
+#             sql_score = user_responses['sql_level']
+#             likert_normalized = (sql_score - 1) / 4.0
             
-            logger.debug(f"SQL: {competence_name} - Score sémantique: {current_score:.3f}, Likert: {sql_score}->{likert_normalized:.3f}")
+#             logger.debug(f"SQL: {competence_name} - Score sémantique: {current_score:.3f}, Likert: {sql_score}->{likert_normalized:.3f}")
             
-            adjusted_score = (0.6 * current_score) + (0.4 * likert_normalized)
-            self.competences_df.at[competence_idx, 'similarity_score'] = adjusted_score
+#             adjusted_score = (0.6 * current_score) + (0.4 * likert_normalized)
+#             self.competences_df.at[competence_idx, 'similarity_score'] = adjusted_score
             
-            logger.debug(f"  → Ajusté à: {adjusted_score:.3f}")
+#             logger.debug(f"  → Ajusté à: {adjusted_score:.3f}")
     
-    logger.info("Ajustement Likert terminé")
+#     logger.info("Ajustement Likert terminé")
 
 
     def _calculate_bloc_scores(self) -> Dict[str, float]:

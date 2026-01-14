@@ -136,25 +136,25 @@ class GenAIHandler:
         else:
             return self._generate_default_bio(user_info, strong_competences, target_job)
     
+
     def _build_progression_prompt(self, weak_competences: list, target_job: str) -> str:
         """Construit le prompt pour le plan de progression"""
         competences_text = "\n".join([f"- {comp['competence']} ({comp['bloc']})" 
                                      for comp in weak_competences[:5]])
         
         return f"""
-        Tu es un conseiller en orientation professionnelle spécialisé dans les métiers de la data.
-        
-        L'utilisateur vise le poste de {target_job} mais a des lacunes dans les domaines suivants:
+        You are a career counselor specializing in data-related professions.
+        The user is aiming for the position of {target_job} but has gaps in the following areas:
         
         {competences_text}
         
-        Génère un plan de progression personnalisé et concret avec:
-        1. Objectifs à 3, 6 et 12 mois
-        2. Ressources spécifiques à recommander (cours, livres, projets)
-        3. Projets pratiques à réaliser
-        4. Indicateurs de progression
+        Generate a personalized and concrete development plan with:
+        1. 3, 6, and 12-month objectives
+        2. Specific resources to recommend (courses, books, projects)
+        3. Practical projects to complete
+        4. Progress indicators
         
-        Sois précis, réaliste et motivant. Réponds en français.
+        Be specific, realistic, and motivating. Respond in English.
         """
     
     def _build_bio_prompt(self, user_info: dict, strong_competences: list, 
@@ -185,7 +185,7 @@ class GenAIHandler:
         3. Valeur ajoutée
         4. Objectif professionnel
         
-        Réponds en français.
+        Réponds en anglais.
         """
     
     def _generate_default_plan(self, weak_competences: list, target_job: str) -> str:
@@ -197,21 +197,6 @@ class GenAIHandler:
         
         Compétences à développer: {competences_text}
         
-        Objectifs:
-        - 3 mois: Acquérir les bases via des cours en ligne (Coursera, edX)
-        - 6 mois: Réaliser 2-3 projets pratiques sur GitHub
-        - 12 mois: Obtenir une certification et postuler à des postes juniors
-        
-        Ressources recommandées:
-        1. Cours en ligne spécialisés
-        2. Documentation technique officielle
-        3. Projets open-source pour la pratique
-        4. Communautés en ligne (Stack Overflow, Reddit)
-        
-        Indicateurs de succès:
-        - Complétion de cours certifiants
-        - Projets réalisés avec code source public
-        - Participation à des forums techniques
         """
     
     def _generate_default_bio(self, user_info: dict, strong_competences: list, 
