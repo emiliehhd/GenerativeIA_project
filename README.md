@@ -42,14 +42,12 @@ Installer les dépendances
 pip install -r requirements.txt
 ```
 
-Configurer l'environnement
-```bash
-cp .env.example .env
-# Éditer .env avec votre cle API
-```
+Configurer l'environnement .env
+Obtenir la clé sur : https://aistudio.google.com/apikey
 
 Lancer l'application
 ```bash
 streamlit run app/main.py
 
 ```
+
