@@ -42,7 +42,7 @@ Installer les dépendances
 pip install -r requirements.txt
 ```
 
-Configurer l'environnement .env
+Configurer l'environnement .env<br>
 Obtenir la clé sur : https://aistudio.google.com/apikey
 
 Lancer l'application
@@ -50,4 +50,5 @@ Lancer l'application
 streamlit run app/main.py
 
 ```
+
 
