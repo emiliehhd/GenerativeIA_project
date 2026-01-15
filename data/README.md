@@ -3,10 +3,10 @@
 ## Structure
 
 ### `referentiel_competences.csv`
-- **competence_id** : Identifiant unique (C001, C002...)
+- **competence_id** : Identifiant unique (C1, C2...)
 - **competence** : Nom de la compétence
 - **bloc** : Bloc de compétences (Data Analysis, ML...)
-- **description** : Description détaillée
+- **description** : Description de la compétence
 
 ### `referentiel_metier.csv`
 - **metier_id** : Identifiant unique (M1, M2...)
@@ -23,5 +23,5 @@
 ## Sources
 
 - ROME : Répertoire Opérationnel des Métiers et des Emplois
-- European e-Competence Framework
+- ESCO : European e-Competence Framework
 - Référentiels métiers du numérique
