@@ -11,14 +11,14 @@ AISCA est une application web intelligente d'analyse sémantique des compétence
 - Recommandations personnalisées de métiers
 - Génération de plans de progression avec GenAI
 - Interface web interactive avec Streamlit
-- Cache intelligent pour optimisation des performances
+- Cache pour optimisation des performances
 
 ## Architecture
 
-src/ → Moteurs d'analyse
-app/ → Interface Streamlit
-data/ → Référentiels structurés
-docs/ → Documentation
+src/ → Moteurs d'analyse<br>
+app/ → Interface Streamlit<br>
+data/ → Référentiels structurés<br>
+docs/ → Documentation<br>
 
 ## Installation 
 
@@ -51,4 +51,5 @@ cp .env.example .env
 Lancer l'application
 ```bash
 streamlit run app/main.py
-```bash
+
+```
