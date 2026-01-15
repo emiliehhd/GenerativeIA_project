@@ -1,0 +1,37 @@
+# Environnements virtuels
+venv/
+env/
+.venv/
+ENV/
+
+# Fichiers Python
+__pycache__/
+*.pyc
+
+# Cache et logs
+.cache
+cache/
+*.log
+logs/
+
+# Environnement
+.env
+*.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Streamlit
+.streamlit/
+
+# OS
+.DS_Store
+Thumbs.db
