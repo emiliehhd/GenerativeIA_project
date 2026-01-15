@@ -125,27 +125,6 @@ def display_questionnaire():
             placeholder="I completed an image classification project during my master's degree. I also did an internship where I developed analytical dashboards..."
         )
 
-        # st.subheader("3. Auto-evaluation per Competencies")
-        
-        # # Competencies auto-evaluation : python
-        # python_level = st.radio(
-        #     "Indicate your Python level :",
-        #     options=["1 - Debutant", "2 - Basics", "3 - Intermediate", "4 - Advance", "5 - Expert"],
-        #     horizontal=True,
-        #     key="python_likert"
-        # )
-        # python_score = int(python_level.split(" - ")[0]) #1 à 5
-
-        # # Competencies auto-evaluation : SQL
-        # sql_level = st.radio(
-        #     "Indicate your SQL level :",
-        #     options=["1 - Debutant", "2 - Basics", "3 - Intermediate", "4 - Advance", "5 - Expert"],
-        #     horizontal=True,
-        #     key="sql_likert"
-        # )
-        # sql_score = int(sql_level.split(" - ")[0])
-
-        
         # Question 3 : Outils et Technologies
         st.subheader("3. Tools and Technologies Mastered")
         st.markdown("List the tools, software and technologies that you are familiar with")
@@ -169,12 +148,8 @@ def display_questionnaire():
             # Stocker les reponses
             st.session_state.user_responses = {
                 "competences": competences,
-                # "python_score": python_score, #ICI
-                # "sql_score": sql_score,
                 "experiences": experiences,
                 "outils": outils,
-                # "python_likert_label": python_level, #ICI
-                # "sql_likert_label": sql_level  
             }
             
             # Lancer l'analyse
@@ -284,7 +259,7 @@ def display_results():
                 with col2:
                     # Barre de progression
                     progress_value = job['score']
-                    st.progress(progress_value, text=f"Adéquation: {progress_value:.1%}")
+                    st.progress(progress_value, text=f"Covrage Score: {progress_value:.1%}")
                     
                     # Bouton pour generer un plan
                     if st.button(f"Plan for this job", key=f"plan_{i}"):

@@ -1,8 +1,396 @@
-CompetencyID,Competency,BlockID,BlockName
-C01,data cleaning,1,Data Analysis
-C02,data visualization,1,Data Analysis
-C03,Python programming,1,Data Analysis
-C04,regression,2,Machine Learning
-C05,neural networks,2,Machine Learning
-C06,tokenization,3,NLP
-C07,transformers,3,NLP
+competence_id,competence,bloc,description
+C1,define database physical storage structure,Data Engineering & Databases,"Specify the physical configuration of database files on a given media. This consists of in-detail specifications of indexing options, data types and data elements placed in the data dictionary."
+C2,"lead ICT data classification responsabilities
+organise ICT data classification responsibilities","Cloud, DevOps & IT Systems",Oversee the classification system an organisation uses to organise its data. Assign an owner to each data concept or bulk of concepts and determine the value of each item of data.
+C3,"implement online data analysis, undertake online data analysis, performing online data analysis, perform an online data analysis, performing an online data analysis,complete online data analysis",Data Analysis,"Analyse online experiences and online data for purposes of understanding user behaviour, triggers of online attention, and other factors that could optimise webpage development and exposure."
+C4,"mathematical computation
+mathematical representation
+mathematical simulation",Data Analysis,"The process of establishing a mathematical representation problem, such as equations, of a real-word to provide insights, discover new features about the problematic scenario, better understand the original problem or to make predictions about it."
+C5,propose technical solutions to business problems,"Cloud, DevOps & IT Systems","Suggest how to solve business issues, using ICT means, so that business processes are improved."
+C6,"administer system
+operate system
+administer network and system","Cloud, DevOps & IT Systems","Handle components of ICT system by maintaining configuration, managing users, monitoring resource use, performing backups and installing hardware or software to comply with the set requirements."
+C7,"oversee ICT change request process
+coordinate ICT change request process
+specify the need for ICT change requests
+govern ICT change request process
+handle ICT change request process","Cloud, DevOps & IT Systems","Specify the incentive for an ICT change request, stating which adjustment in the system needs to be accomplished and execute or supervise the execution of it."
+C8,Agile management software,"Cloud, DevOps & IT Systems","The agile project management approach is a methodology for planning, managing and overseeing of ICT resources in order to meet specific goals and using project management ICT tools."
+C9,"design automated migration methods
+design automated transfer of ICT information
+generate automated transfer of ICT information
+develop automated transfer of ICT information
+create automated transfer of ICT information",Data Engineering & Databases,"Create automated transfer of ICT information between storage types, formats and systems to save human resources from performing the task manually."
+C10,"capture IT knowledge
+capture ICT knowledge","Cloud, DevOps & IT Systems",Evaluate the implicit mastery of skilled experts in an ICT system to make it explicit for further analysis and usage.
+C11,"write research applications
+gather and define user requirements
+categorise customer requirements",Programming & Software Development,"Apply techniques and tools, such as surveys, questionnaires, ICT applications, for eliciting, defining, analysing, documenting and maintaining user requirements from system, service or product."
+C12,sustainable computing,"Cloud, DevOps & IT Systems","The use of ICT systems in an environmentally responsible and sustainable manner, such as the implementation of energy-efficient servers and central processing units (CPUs), reduction of resources and correct disposal of e-waste."
+C13,"perform data analysis activities on vessel data
+use ship data analysis in decision making
+conduct data analysis activities on ship data
+evaluate ship data
+conduct analysis of vessel data
+perform analysis of vessel data
+perform analysis of ship data
+utilise vessel data analysis in decision making
+analyse ship data",Data Analysis,Collect information from a vessel's management software and cross reference it to analyse the data from different points of view and inform decision-making.
+C14,"business analytics
+BI
+business intelligence tools",Data Analysis,The tools used to transform large amounts of raw data into relevant and helpful business information.
+C15,"Google Sheets
+PlanMaker
+Gnumeric
+OxygenOffice Professional Calc
+ResolverOne
+ThinkFree Office Calc
+CellPro
+Simple Spreadsheet
+Corel Calculate
+MS Excel
+wikiCalc
+Calligra Sheets
+QT Calc Express
+Lotus 1-2-3
+Quantrix Modeler
+Dolphinity Planner
+Kingsoft Spreadsheet
+Sheetster
+Accel Spreadsheet
+LibreOffice Calc
+Microsoft Office Excel
+use spreadsheets program
+IBM Lotus Symphony Spreadsheets
+Household Budget Worksheet
+design spreadsheets
+Myrtle
+Ability Office Spreadsheet
+DhtmlxSpreadsheet
+OOo4Kids Calc
+Lotus Improv
+Sphygmic Software Spreadsheet
+Zoho Sheet",Data Analysis,"Use software tools to create and edit tabular data to carry out mathematical calculations, organise data and information, create diagrams based on data and to retrieve them."
+C16,"estimate the probability of an outcome or fact
+work with probabilities
+make estimations",Data Analysis,Predict the probability of an outcome based on calculations or experience.
+C17,"GCC
+Ada
+ALGOL
+Visual Basic .NET
+Visual Basic
+HyperTalk
+AppleScript
+Ceylon
+LabVIEW
+Euphoria
+Subversion
+OCaml
+PL/I
+MSVC++
+Dylan
+AspectJ
+Korn-shell
+STL
+Io
+Hack
+Turing
+Object Pascal
+Curl
+DIBOL
+cT
+KnockoutJS
+bash
+Seed7
+Emacs Lisp
+OpenCV
+Rebol
+Lua
+BCPL
+ActionScript
+C shell
+AWK
+INTERCAL
+COMAL
+PowerShell
+occam
+Fantom
+Caml
+Z shell
+Tcl
+Squirrel-script
+IDL
+Gosu
+Fortran
+X10
+AngularJS
+REXX
+BizTalk
+ColdFusion
+PostScript
+TACL",Programming & Software Development,"The techniques and principles of software development, such as analysis, algorithms, coding, testing and compiling of programming paradigms (e.g. object oriented programming, functional programming) and of programming languages."
+C18,data scraping,Data Engineering & Databases,"The methods of artificial intelligence, machine learning, statistics and databases used to extract content from a dataset."
+C19,"file production data for quality control
+keep records of production data for quality control
+file machinery fault statistics for quality assurance
+evidence record machinery fault statistics for quality assurance
+evidence record production data for quality control
+chronicle machinery fault statistics for quality assurance
+document production data for quality control
+chronicle production data for quality control
+document machinery fault statistics for quality assurance",Data Engineering & Databases,"Keep records of the machine's faults, interventions and irregularities for quality control."
+C20,"analyze energy market trends
+analysing energy market data
+analysing energy market trends
+energy market trends analysing
+energy market data analysing
+energy market trend analysing",Data Analysis,"Analyse data influencing the movement of the energy market, and liaise with the important stakeholders in the energy field in order to make accurate predictions and perform the most beneficial actions."
+C21,"utilise ICT tools for logic programming
+use Datalog for logic programming
+employ Answer Set Programming
+employ ICT tools for logic programming
+use Prolog for logic programming",Programming & Software Development,"Utilise specialised ICT tools to create computer code composed of series of sentences in logical form, expressing rules and facts about some problem domain. Use programming languages which support this method such as Prolog, Answer Set Programming and Datalog."
+C22,"apply numerical analysis to data
+apply JMP statistical analysis techniques
+apply minitab statistical analysis techniques",Data Analysis,"Use models (descriptive or inferential statistics) and techniques (data mining or machine learning) for statistical analysis and ICT tools to analyse data, uncover correlations and forecast trends."
+C23,"ML
+supervised learning
+machine learning models
+semi-supervised learning
+unsupervised learning",Machine Learning,"The principles, methods and algorithms of machine learning, a subfield of artificial intelligence. Common machine learning models such as supervised or unsupervised models, semi- supervised models and reinforcement learning models."
+C24,"data feature engineering
+t-distributed stochastic neighbor embedding
+data feature extraction
+data feature selection
+multidimensional scaling
+t-SNE
+Kohonen self-organizing map",Machine Learning,"Reduce the number of variables or features for a dataset in machine learning algorithms through methods such as principal component analysis, matrix factorization, autoencoder methods, and others."
+C25,"analyse large-scale data in health care
+analyse statistics in healthcare
+analyse statistic in healthcare
+interpret large-scale data in healthcare
+assay large-scale data in healthcare
+evaluate large-scale data in healthcare
+carry out large-scale data in healthcare
+analyze large-scale data in healthcare
+examine large-scale data in healthcare
+analyse big data in healthcare",Data Analysis,"Carry out large-scale data gathering such as questionnaire surveys, and analyse the obtained data."
+C26,"mine data
+use model data",Machine Learning,"Explore large datasets to reveal patterns using statistics, database systems or artificial intelligence and present the information in a comprehensible way."
+C27,"analyze big data
+scrutinise big data
+big data analysis
+investigate big data
+search big data
+test big data
+analysing big data
+big data analysing",Data Analysis,"Collect and evaluate numerical data in large quantities, especially for the purpose of identifying patterns between the data."
+C28,data engineering methods,Data Engineering & Databases,The process of developing and constructing systems for implementing data collection and analysis at large scale.
+C29,"oil operations data analysis
+analysing oil operations data
+recording data about oil operations
+data analysis for oil operations
+recording of oil operations data
+analysis of oil operations data
+analyze oil operations data
+oil operations data recording
+data recording for oil operations
+analysing data for oil operations
+record oil operations data
+recording oil operations data",Data Analysis,"Record and process oil operating data. Comprehend and analyse documents, instruments and data results of laboratory analyses."
+C30,"biostatistical methods
+medical research using statistics
+medical application of statistics
+statistical analysis of medical practice",Data Analysis,"The methods used to summarise, collect, present, and interpret data in medical practice. The use of the obtained data to estimate and test hypotheses in the medical field."
+C31,"MySQL Classic Edition
+MySQL Enterprise Edition
+MySQL Embedded (OEM/ISV)
+MySQL Standard Edition
+MySQL Cluster CGE",Data Engineering & Databases,"The computer program MySQL is a tool for creating, updating and managing databases, currently developed by the software company Oracle."
+C32,"Informix 4GL/SQL
+Subquery
+SEQUEL",Data Engineering & Databases,The computer language SQL is a query language for retrieval of information from a database and of documents containing the needed information. It is developed by the American National Standards Institute and the International Organization for Standardization.
+C33,utilise object-oriented programming,Programming & Software Development,"Utilise specialised ICT tools for programming paradigm based on the concept of objects, which can contain data in the form of fields and code in the form of procedures. Use programming languages which support this method such as JAVA and C++."
+C34,"employ ICT tools for computer code creation
+use ICT tools for computer code generation
+employ programming languages for computer code creation
+use ICT tools for computer code development
+use ICT tools for computer code creation",Programming & Software Development,"Utilise specialised ICT tools to create computer code that is interpreted by the corresponding run-time environments in order to extend applications and automate common computer operations. Use programming languages which support this method such as Unix Shell scripts, JavaScript, Python and Ruby."
+C35,quantitative data analysis,Data Analysis,The technique of employing statistical and mathematical modelling and measurement to represent a specific reality through numbers.
+C36,data presentation software,Data Analysis,"A computer tool or application that creates a graphical and visual representation of data, allowing a better understanding and interpretation of complex data through visual elements such as maps, charts, infographics or graphs."
+C37,statistical modeling,Data Analysis,The approaches for employing statistical analysis to dataset within the data science field. It seeks to elaborate reality predictions through statistical models and explicit assumptions.
+C38,"survey data processing
+survey data analysis
+collected survey data processing
+processing collected survey data
+analysing of survey data
+processing survey data
+processing of collected survey data
+analyse survey data
+analysis of survey data
+analysing survey data",Data Analysis,"Analyse and interpret survey data acquired from a wide variety of sources e.g. satellite surveys, aerial photography and laser measurement systems."
+C39,"Microsoft SSIS
+Microsoft SQL Server Integration Services
+SSIS",Data Engineering & Databases,"The computer program SQL Server Integration Services is a tool for integration of information from multiple applications, created and maintained by organisations, into one consistent and transparent data structure, developed by the software company Microsoft."
+C40,"interpret data on elements of logistics
+interpret logistical data through analytical methods
+analyse data on logistical elements
+use methods for analysing logistical data
+interpret logistical data
+utilise methods for analysing logistical data
+interpret logistical data through use of analytical methods
+utilise logistical data analysis methods
+utilise methods of logistical data analysis
+analyse logistical data
+use logistical data analysis methods",Data Analysis,"Read and interpret supply chain and transportation data. Analyse the reliability and availability of findings by using methods such as data mining, data modelling and cost-benefit analysis."
+C41,research design methods,Programming & Software Development,"The set of methods and techniques of research that are used to conduct a study. It includes practical steps in research such as purpose statement, data collection, methodology, and data analysis."
+C42,DBMS,Data Engineering & Databases,"Extract, store and verify information using database management systems based on the relational database model, which arranges data into tables of rows and columns, such as Oracle Database, Microsoft SQL Server and MySQL."
+C43,"Not Only SQL non-relational database
+NoSQL database management system
+NoSQL non-relational database
+Not Only SQL database management system",Data Engineering & Databases,"The Not Only SQL non-relational database used for creating, updating and managing large amounts of unstructured data stored in the cloud."
+C44,"experimental data
+use of data in performance of work
+use of statistics
+organisation of data
+data analysis
+survey data
+use of statistics in performance of work
+data collection
+stats
+data work
+big data
+metadata
+statistical analysis
+use of data
+administrative data",Data Analysis,"The study of statistical theory, methods and practices such as collection, organisation, analysis, interpretation and presentation of data. It deals with all aspects of data including the planning of data collection in terms of the design of surveys and experiments in order to forecast and plan work-related activities."
+C45,"analyse civil aviation authority data for incorporation into aeronautical publications
+develop aeronautical publication amendments through data analysis
+collect edit and analyse data for incorporation into aeronautical publications
+evaluate data for aeronautical publications
+analyze data for aeronautical publications
+assess data for aviation publications
+conduct aeronautical data analysis for incorporation into aeronautical publications
+evaluate data for aviation publications
+create aeronautical publication amendments through data analysis
+analyse data for aviation publications
+assess data for aeronautical publications",Data Analysis,"Collect, edit, and analyse data received from civil aviation authorities and related services. Analyse the data to prepare amendments that are incorporated into aeronautical informational publications."
+C46,"carry out machine learning
+use machine learning
+utilize machine learning
+perform machine learning",Machine Learning,"Use techniques and algorithms that are able to extract mastery out of data, learn from it and make predictions, to be used for program optimisation, application adaptation, pattern recognition, filtering, search engines and computer vision."
+C47,business data analytics,Data Analysis,The disciplines and technologies for solving business problems through employing quantitative methods such as data analysis and statistical models.
+C48,fundamental data analysis,Data Analysis,The techniques for measuring the intrinsic value of a financial security through the assessment its economic and financial factors. It combines together the analysis of macroeconomic trends and of financial statements of the companies.
+C49,carry out ICT user research,Programming & Software Development,"Perform research tasks such as recruitment of participants, scheduling of tasks, collecting of empirical data, data analysis and production of materials in order to assess the interaction of users with an ICT system, program or application."
+C50,Postgres,Data Engineering & Databases,"The computer program PostgreSQL is a free and open-source software tool for creating, updating and managing databases, developed by the PostgreSQL Global Development Group."
+C51,"PointBase Embedded
+R:Base
+Adaptive Server Anywhere
+Oracle Lite
+Rdb
+Interbase
+Velocis
+Jasmine ii
+Raima Database Manager
+IDMS
+YARD-SQL
+Versant
+Oracle 8I
+Db.linux
+NonStop SQL
+Quadbase SQL Server
+PointBase Network Server
+Pervasive.SQL 2000
+UniData
+UniSQL
+Adaptive Server Enterprise
+Db.star
+POET Object Server Suite
+Informix Dynamic Server 2000
+Informix Extended Parallel Server
+DBMS
+Cloudscape
+SUPRA
+database systems
+SQLBase
+IMS DB
+Peoplesoft
+Datacom
+DB2 Everyplace
+Sybase
+PointBase Mobile
+Model 204
+Advantage Database Server
+Pervasive.SQL Workgroup
+Adabas D
+TimesTen
+DB engines
+Adabas
+Objectivity DB
+SQL
+Ingres ii",Data Engineering & Databases,"The tools for creating, updating and managing databases, such as Oracle, MySQL and Microsoft SQL Server."
+C52,"statistical analysing of system software
+statistical analysis of system software
+statistical analysis of software systems
+statistical analysis system programme
+statistical analysis system operating system
+statistical analysis system application",Data Analysis,"Specific software system (SAS) used for advanced analytics, business intelligence, data management, and predictive analytics."
+C53,"C++ software
+C++ framework",Programming & Software Development,"The techniques and principles of software development, such as analysis, algorithms, coding, testing and compiling of programming paradigms in C++."
+C54,use network diagnostics tools,"Cloud, DevOps & IT Systems","Use software tools or components that monitor ICT network parameters, such as performance and throughput, provide data and statistics, diagnose errors, failures or bottlenecks and support decision making."
+C55,MS SQL Server,Data Engineering & Databases,"The computer program SQL Server is a tool for creating, updating and managing databases, developed by the software company Microsoft."
+C56,"perform analysis of safety data
+analyse safety data to identify safety threats
+conduct safety analyses using database information
+conduct safety data analysis
+evaluate safety data
+analyse safety data to determine safety threats
+perform assessments of safety data
+utilise information from safety bases to analyse threats to safety
+conduct analysis of safety data
+use information from safety databases to analyse threats to safety
+evaluate safety data to determine safety threats
+perform safety data assessment",Data Analysis,Use different safety databases to perform analyses of information on actual or potential safety threats.
+C57,"create data visualisation
+visualise data",Data Analysis,Create visual representations of data such as charts or diagrams for easier understanding.
+C58,"use particular data analysis software
+utilise particular data analysis software
+utilise specific data analysis software
+undertake data analysis through use of specific software
+perform data analysis using specific software
+conduct data analysis activities utilising specific software
+conduct data analysis using particular software
+carry out data analysis using specific software
+use specific software for data analysis
+utilise specific software for data analysis",Data Analysis,"Use specific software for data analysis, including statistics, spreadsheets, and databases. Explore possibilities in order to make reports to managers, superiors, or clients."
+C59,"Python 3K
+Python",Programming & Software Development,"The techniques and principles of software development, such as analysis, algorithms, coding, testing and compiling of programming paradigms in Python."
+C60,"present a report
+prepare statistical reports
+submit presentation",Data Analysis,"Display results, statistics and conclusions to an audience in a transparent and straightforward way."
+C61,"monitor an after sales record
+monitoring after sale records
+view after sales records
+watch after sales records
+oversee after sales records
+monitoring after sales records
+supervise after sales records",Data Analysis,Keep an eye on the after sales feedback and monitor customer satisfaction or complaints; record after sales calls for thorough data analysis.
+C62,"compose statistical data for insurance purposes
+collect statistical data for insurance purposes
+produce statistics for insurance purposes",Data Analysis,Produce statistics on potential risks such as natural and technical disasters and production downtimes.
+C63,"analysing seismic data
+analyse seismic data
+interpreting of seismic data
+interpreting seismic data
+analysis of seismic data
+seismic data interpretation
+analysing of seismic data
+seismic data analysis
+interpretation of seismic data",Data Analysis,Interpret data gathered through seismic survey to visualize the subsurface of the earth.
+C64,"deep neural networking
+deep learning methods
+deep learning principles",Machine Learning,"The principles, methods and algorithms of deep learning, a subfield of artificial intelligence and machine learning. Common neural networks like perceptrons, feed-forward, backpropagation, and convolutional and recurrent neural networks."
+C65,"data science process
+science of data",NLP & AI Advanced / Data Science,The field of study that deals with big amount of data using AI techniques such as machine learning algorithms to predict patterns and obtain useful information to make business decisions.
+C66,empirical data analysis,Data Analysis,The evidence-based method that is used to analyse and interpret information with the aim of drawing conclusions about a specific issue.
+C67,NLP,NLP & AI Advanced / Data Science,The technologies which enable ICT devices to understand and interact with users through human language.
