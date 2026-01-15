@@ -164,7 +164,7 @@ class GenAIHandler:
         name = user_info.get('name', 'le candidat')
         
         return f"""
-        Tu es un expert en recrutement tech. Rédige une bio professionnelle percutante pour LinkedIn.
+        Rédige un resumé professionnel du profil .
         
         Informations:
         - Nom: {name}
@@ -173,7 +173,7 @@ class GenAIHandler:
         - Compétences principales: {competences_text}
         
         Exigences:
-        - Style professionnel LinkedIn
+        - Style professionnel 
         - 100-120 mots maximum
         - Mettre en avant les réalisations potentielles
         - Inclure des verbes d'action
@@ -193,9 +193,9 @@ class GenAIHandler:
         competences_text = ", ".join([comp['competence'] for comp in weak_competences[:3]])
         
         return f"""
-        PLAN DE PROGRESSION POUR {target_job.upper()}
+        PROGRESS PLAN : {target_job.upper()}
         
-        Compétences à développer: {competences_text}
+        Skills to improve : {competences_text}
         
         """
     

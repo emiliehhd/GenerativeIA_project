@@ -9,6 +9,8 @@ from typing import Dict, List, Tuple, Any
 import logging
 import os
 
+from weight_matrix import JOBS, DOMAINS, MATRIX, WeightMatrix
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -71,7 +73,6 @@ class SemanticEngine:
         Args:
             user_responses: Dictionnaire avec les réponses utilisateur
                 - competences: texte des compétences
-                - auto-evaluation des competences : likert 1 a 5
                 - experiences: texte des expériences
                 - outils: texte des outils maîtrisés
         
@@ -82,9 +83,9 @@ class SemanticEngine:
         
         # Extraire et combiner les textes utilisateur
         user_texts = []
-        for key in ['competences', 'experiences', 'outils', 'python_score', 'sql_score']:
+        for key in ['competences', 'experiences', 'outils']:
+
             if key in user_responses and user_responses[key]:
-                print(">>>", key, "\n",user_responses[key])
                 user_texts.append(user_responses[key])
         
         if not user_texts:
@@ -103,14 +104,27 @@ class SemanticEngine:
         # Associer les scores aux compétences
         self.competences_df['similarity_score'] = max_similarities
 
-        # # Ajuster les scores basés sur l'échelle de Likert
-        # self._adjust_scores_with_likert(user_responses) #ICI
+        # Dans semantic_engine.py, après ligne 105 :
+        print("=== SCORES SÉMANTIQUES BRUTS ===")
+        for i, score in enumerate(max_similarities):
+            comp_name = self.competences_df.iloc[i]['competence']
+            print(f"{comp_name}: {score:.4f}")
+        print("="*40)
         
         # Calculer les scores par bloc
         bloc_scores = self._calculate_bloc_scores()
+
         
-        # Recommander des métiers
-        metier_recommendations = self._recommend_metiers(bloc_scores)
+        # Calculer le score global avec matrice de poids
+        metier_scores = []
+        for job_id in JOBS.keys():
+            score = WeightMatrix.get_job_score(bloc_scores, job_id)
+            metier_scores.append(score)
+        
+        #ICI
+        # Recommend jobs
+        # metier_recommendations = self._recommend_metiers(bloc_scores)
+        metier_recommendations = self._recommend_metiers_with_weights(bloc_scores)  
         
         # Identifier les compétences fortes et faibles
         strong_competences = self._identify_strong_competences()
@@ -119,71 +133,14 @@ class SemanticEngine:
         # Score global
         overall_score = np.mean(list(bloc_scores.values()))
 
-        # # Stocker les scores Likert dans les résultats #ICI
-        # likert_scores = {}
-        # if 'python_level' in user_responses:
-        #     likert_scores['python'] = user_responses['python_level']
-        # if 'sql_level' in user_responses:
-        #     likert_scores['sql'] = user_responses['sql_level']
-        
         return {
             'bloc_scores': bloc_scores,
             'overall_score': float(overall_score),
-            # 'likert_scores': likert_scores,
             'metier_recommendations': metier_recommendations,
             'strong_competences': strong_competences,
             'weak_competences': weak_competences,
             'competence_details': self.competences_df[['competence', 'bloc', 'similarity_score']].to_dict('records')
         }
-    
-    
-# def _adjust_scores_with_likert(self, user_responses: Dict[str, Any]):
-#     """
-#     Ajuste les scores sémantiques basés sur les réponses Likert
-#     """
-#     logger.info(f"Ajustement avec scores Likert: {user_responses.get('python_level')}, {user_responses.get('sql_level')}")
-    
-#     # Vérifier si les scores Likert existent
-#     has_python_likert = 'python_level' in user_responses
-#     has_sql_likert = 'sql_level' in user_responses
-    
-#     if not (has_python_likert or has_sql_likert):
-#         logger.info("Aucun score Likert fourni, pas d'ajustement")
-#         return
-    
-#     # Ajuster chaque compétence
-#     for competence_idx, row in self.competences_df.iterrows():
-#         competence_name = row['competence'].lower()
-#         current_score = row['similarity_score']
-        
-#         # Vérifier Python
-#         if has_python_likert and ('python' in competence_name):
-#             python_score = user_responses['python_level']
-#             # Convertir 1-5 → 0-1
-#             likert_normalized = (python_score - 1) / 4.0
-            
-#             # Log pour debug
-#             logger.debug(f"Python: {competence_name} - Score sémantique: {current_score:.3f}, Likert: {python_score}->{likert_normalized:.3f}")
-            
-#             # Combinaison : 60% sémantique, 40% Likert
-#             adjusted_score = (0.6 * current_score) + (0.4 * likert_normalized)
-#             self.competences_df.at[competence_idx, 'similarity_score'] = adjusted_score
-            
-#             logger.debug(f"  → Ajusté à: {adjusted_score:.3f}")
-        
-#         # Vérifier SQL
-#         elif has_sql_likert and ('sql' in competence_name or 'query' in competence_name):
-#             sql_score = user_responses['sql_level']
-#             likert_normalized = (sql_score - 1) / 4.0
-            
-#             logger.debug(f"SQL: {competence_name} - Score sémantique: {current_score:.3f}, Likert: {sql_score}->{likert_normalized:.3f}")
-            
-#             adjusted_score = (0.6 * current_score) + (0.4 * likert_normalized)
-#             self.competences_df.at[competence_idx, 'similarity_score'] = adjusted_score
-            
-#             logger.debug(f"  → Ajusté à: {adjusted_score:.3f}")
-    
-#     logger.info("Ajustement Likert terminé")
 
 
     def _calculate_bloc_scores(self) -> Dict[str, float]:
@@ -199,39 +156,44 @@ class SemanticEngine:
         
         return bloc_scores
     
-    def _recommend_metiers(self, bloc_scores: Dict[str, float]) -> List[Dict[str, Any]]:
-        """Recommande des métiers basés sur les scores de blocs"""
-        if self.metiers_df is None:
-            return []
+
+    def _recommend_metiers_with_weights(self, bloc_scores: Dict[str, float]) -> List[Dict[str, Any]]:
+        """
+        Recommande des métiers avec la matrice de poids
         
-        recommendations = []
+        Args:
+            bloc_scores: Scores par bloc
         
-        for _, metier_row in self.metiers_df.iterrows():
-            metier_score = 0.0
-            competence_ids = str(metier_row['competences_requises']).split(';')
-            
-            # Calculer le score pour ce métier
-            for comp_id in competence_ids:
-                comp_row = self.competences_df[self.competences_df['competence_id'] == comp_id.strip()]
-                if not comp_row.empty:
-                    bloc = comp_row.iloc[0]['bloc']
-                    if bloc in bloc_scores:
-                        metier_score += bloc_scores[bloc]
-            
-            # Normaliser le score
-            if competence_ids and competence_ids[0].strip():
-                metier_score /= len(competence_ids)
-            
-            recommendations.append({
-                'metier': metier_row['metier'],
-                'score': float(metier_score),
-                'description': metier_row['description']
+        Returns:
+            List: Métiers recommandés
+        """
+        # Utiliser la matrice de poids pour les recommandations
+        recommendations = WeightMatrix.get_recommendations(bloc_scores, top_k=3)
+        
+        # Formater les résultats
+        formatted_recommendations = []
+        for rec in recommendations:
+            formatted_recommendations.append({
+                'metier': rec['name'],
+                'score': rec['score'],
+                'id': rec['id'],
+                'explanation': WeightMatrix.explain_score(rec['id'], bloc_scores),
+                'description': self._get_job_description(rec['id'])
             })
         
-        # Trier par score décroissant
-        recommendations.sort(key=lambda x: x['score'], reverse=True)
+        logger.info(f"Recommandations avec poids: {[(r['metier'], r['score']) for r in formatted_recommendations]}")
         
-        return recommendations[:3]  # Retourner les 3 meilleurs
+        return formatted_recommendations
+
+    #ICI
+    def _get_job_description(self, job_id: str) -> str:
+        """Récupère la description d'un métier depuis le CSV"""
+        if self.metiers_df is not None:
+            job_row = self.metiers_df[self.metiers_df['metier_id'] == job_id]
+            if not job_row.empty:
+                return job_row.iloc[0].get('description', '')
+        return "Description non disponible"
+
     
     def _identify_strong_competences(self, threshold: float = 0.7) -> List[Dict[str, Any]]:
         """Identifie les compétences bien maîtrisées"""
@@ -242,3 +204,48 @@ class SemanticEngine:
         """Identifie les compétences à améliorer"""
         weak = self.competences_df[self.competences_df['similarity_score'] < threshold]
         return weak[['competence', 'bloc', 'similarity_score']].to_dict('records')
+
+    
+    def calculate_weighted_score_for_job(self, bloc_scores: Dict[str, float], job_id: str) -> Dict[str, Any]:
+        """
+        Calcule le score détaillé pour un métier spécifique
+        
+        Args:
+            bloc_scores: Scores par bloc
+            job_id: ID du métier
+        
+        Returns:
+            Dict: Score détaillé avec explications
+        """
+        if job_id not in WeightMatrix.MATRIX:
+            return {"score": 0.0, "details": []}
+        
+        job_weights = WeightMatrix.MATRIX[job_id]
+        details = []
+        total_weighted = 0.0
+        total_weight = 0.0
+        
+        for domain_id, weight in job_weights.items():
+            if domain_id in WeightMatrix.DOMAINS:
+                domain_name = WeightMatrix.DOMAINS[domain_id]
+                bloc_score = WeightMatrix._find_bloc_score(bloc_scores, domain_name)
+                
+                weighted_score = bloc_score * weight
+                total_weighted += weighted_score
+                total_weight += weight
+                
+                details.append({
+                    'domain': domain_name,
+                    'bloc_score': bloc_score,
+                    'weight': weight,
+                    'weighted_score': weighted_score,
+                    'importance': 'Haute' if weight >= 0.8 else 'Moyenne' if weight >= 0.4 else 'Basse'
+                })
+        
+        final_score = total_weighted / total_weight if total_weight > 0 else 0.0
+        
+        return {
+            'score': final_score,
+            'details': details,
+            'job_name': WeightMatrix.JOBS.get(job_id, "Inconnu")
+        }
